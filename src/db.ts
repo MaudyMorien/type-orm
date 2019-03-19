@@ -3,6 +3,7 @@ import { DefaultNamingStrategy } from 'typeorm/naming-strategy/DefaultNamingStra
 import { NamingStrategyInterface } from 'typeorm/naming-strategy/NamingStrategyInterface'
 import { snakeCase } from 'typeorm/util/StringUtils'
 import { Page } from './pages/entity'
+import { Fluffball } from './fluffballs/entity'
 
 class CustomNamingStrategy extends DefaultNamingStrategy implements NamingStrategyInterface {
 
@@ -28,7 +29,8 @@ export default () =>
       type: "postgres",
       url: process.env.DATABASE_URL || 'postgres://postgres:secret@localhost:5432/postgres',
       entities: [
-          Page
+          Page,
+          Fluffball
       ],
       synchronize: true,
       logging: true,

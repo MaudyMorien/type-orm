@@ -1,12 +1,13 @@
 import 'reflect-metadata'
 import {createKoaServer} from "routing-controllers"
 import PageController from "./pages/controller"
+import FluffballControler from './fluffballs/controller'
 import setupDb from './db'
 
 const port = process.env.PORT || 4000
 
 const app = createKoaServer({
-   controllers: [PageController]
+   controllers: [PageController, FluffballControler]
 })
 
 setupDb()
