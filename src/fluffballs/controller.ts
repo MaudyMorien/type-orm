@@ -28,10 +28,12 @@ export default class FluffballController {
   }
 
   @Post('/fluffballs')
-  @HttpCode(201)
-  createPage(
-    @Body() newPage: Fluffball
+  async createFluffball(
+    @Body() fluffball: Fluffball
   ) {
-    return newPage.save()
+    const {password, ...rest} = fluffball
+    const entity = Fluffball.create(rest)
+    await entity.setPassword(password)
+    return entity.save()
   }
 }

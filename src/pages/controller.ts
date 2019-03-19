@@ -1,4 +1,4 @@
-import { JsonController, Get, Param, Put, Body, Post, HttpCode, NotFoundError } from 'routing-controllers'
+import { Authorized, JsonController, Get, Param, Put, Body, Post, HttpCode, NotFoundError } from 'routing-controllers'
 import { Page } from './entity'
 
 @JsonController()
@@ -26,7 +26,7 @@ export default class PageController {
     if (!updatePage) throw new NotFoundError('Cannot find page')
     return Page.merge(updatePage, update).save()
   }
-
+  @Authorized()
   @Post('/pages')
   @HttpCode(201)
   createPage(
